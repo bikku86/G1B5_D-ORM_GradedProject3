@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Tickets Management System</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<style>
+.form-control[readonly] {
+	background-color: #f0f0f0;
+}
+
+.btn-return {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+</style>
+</head>
+<body>
+	<!-- navbar -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-primary text-white">
+		<a class="navbar-brand" href="#">Ticket Tracker Application</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"><a class="nav-link" href="/homePage">Tickets
+						<span class="sr-only">(current)</span>
+				</a></li>
+				<li class="nav-item active"><a class="nav-link"
+					href="/ticket/new">New Ticket</a></li></ul>
+		</div>
+	</nav>
+	<br>
+	<br>
+	<div class="container">
+		<div class="row">
+			<div
+				class="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+				<h1 class="text-center bg-light">View Ticket Details</h1>
+				<div class="card-body">
+					<form>
+						<div class="form-group">
+							<label> Ticket title </label> <input type="text" name="title"
+								th:value="${ticketDetail.title}" class="form-control"
+								placeholder="Enter title" readonly />
+						</div>
+
+						<div class="form-group">
+							<label> Ticket Short Description </label> <input type="text"
+								name="description" th:value="${ticketDetail.description}"
+								class="form-control" placeholder="Enter Short Description"
+								readonly />
+						</div>
+
+						<div class="form-group">
+							<label> Ticket Creation Date </label> <input type="date"
+								name="createDate" th:value="${ticketDetail.createDate}"
+								class="form-control" readonly />
+						</div>
+
+						<div class="form-group">
+							<label> Ticket content</label>
+							<textarea name="content" th:field="*{ticketDetail.content}"
+								class="form-control" readonly></textarea>
+						</div>
+					</form>
+
+				</div>
+				<a th:href="@{/homePage}" class="btn btn-primary btn-return">Return
+					to Home</a>
+			</div>
+		</div>
+	</div>
+	
+	<!-- footer -->
+	<footer id="sticky-footer" class="flex-shrink-0 py-3 bg-light">
+		<div class="container text-center">
+			<small>Copyright &copy; 2023 GreatLearning All Rights
+				Reserved</small>
+		</div>
+	</footer>
+	
+</body>
+</html>
